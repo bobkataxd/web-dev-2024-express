@@ -25,7 +25,20 @@ async function testPostUserRequest() {
     console.error('Error:', error.response ? error.response.data : error.message);
   }
 }
+async function testPutUserRequest() {
+  try {
+    const response = await axios.put('http://localhost:3000/user/subjects', {
+      id: 1,
+      subjects: [{id: 1, name: 'biology'}, { id: 2, name: 'Math'}]
+    });
+    console.log('Response data:', response.data);
+  } catch (error) {
+    console.error('Error:', error.response ? error.response.data : error.message);
+  }
+}
+
 (async () => {
   await testPostUniversityRequest();
-  await testPostUserRequest()
+  await testPostUserRequest();
+  await testPutUserRequest() ;
 })()
